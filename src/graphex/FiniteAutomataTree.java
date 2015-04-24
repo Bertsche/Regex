@@ -93,6 +93,8 @@ public class FiniteAutomataTree
     public void setStartNode(FiniteAutomataNode node)
     {
         startNode = node;
+
+
     }
 
     public void addNode(FiniteAutomataNode node)
