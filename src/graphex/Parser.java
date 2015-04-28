@@ -60,6 +60,10 @@ public class Parser
     public void parseStarter() throws Exception {
 
         nfaTree = parseRegex();
+        if(iteratorRegex.hasNext())
+        {
+            throw new Error("There entered regex was invalid.");
+        }
 
     }
 
@@ -93,7 +97,8 @@ public class Parser
 
 
     private FiniteAutomataTree parseFactor() throws Exception {
-        FiniteAutomataTree t = parseBase();
+        FiniteAutomataTree t;
+        t = parseBase();
         if(currentChar == '*')
         {
             t.star();
@@ -110,11 +115,15 @@ public class Parser
         {
             consumeInput();
             t = parseRegex();
-            consumeInput();
+            if(currentChar ==')')
+                consumeInput();
+            else
+                throw new Error("Invalid Regex, parenthesis mismatch");
+
         }
-        else if(currentChar == null)
+        else if(currentChar == '|' || currentChar == ')' || currentChar == null)
         {
-          throw new Exception("There is an error in your regex: Expected character, instead got end of regex!");
+          throw new Error("There is an error in your regex.");
         }
         else
         {
@@ -142,7 +151,7 @@ public class Parser
 
     private void consumeInput()
     {
-        System.out.println("Consuming character: " + currentChar);
+        //System.out.println("Consuming character: " + currentChar);
         if(iteratorRegex.hasNext())
             currentChar = iteratorRegex.next();
         else
@@ -166,7 +175,7 @@ public class Parser
         dfaTree.setStartNode(dfaRoot);
 
         dfaNullState.setName("Termination State");
-        dfaNullState.setDfaChecked(true);
+        dfaNullState.setDfaChecked(false);
         dfaTree.addNode(dfaNullState);
         dfaTree.setNullState(dfaNullState);
 
@@ -179,7 +188,7 @@ public class Parser
 
             for(int j = 0; j < i; j++)
             {
-                System.out.println("j = " + j);
+
                 dfaBuildComplete = dfaBuildComplete && cycler.get(j).isDfaChecked();
                 if(! cycler.get(j).isDfaChecked())
                 {
@@ -207,7 +216,8 @@ public class Parser
 
     private void nfaToDfaConnectionMaker(FiniteAutomataNode dfaNode)
     {
-        HashSet<Character> languageLeftover = Grep.getLanguage();
+        HashSet<Character> languageLeftover = new HashSet<>(Grep.getLanguage());
+
 
         for(Character c : dfaNode.getContainedKeys())
         {

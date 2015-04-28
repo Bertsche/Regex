@@ -1,0 +1,12 @@
+This is a tester file that will be analyzed to match regex.  This line should definitely not match.
+aababbbbabbabbabbababbabaaaaabbbcccccccccccccccb
+aacb
+b
+aaaaaaaab
+bbbbbbbbbbbbbb
+ccccccb
+acb
+aaaaaaaabbbbbbccccccccccccccbd
+aa
+bababab
+ababababababab

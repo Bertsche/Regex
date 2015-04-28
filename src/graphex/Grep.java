@@ -17,7 +17,7 @@ public class Grep
     private static String dfaOutput;
     private static String nfaOutput;
     private static String regexAsString;
-    private static String inputFileAsString;
+    private static String inputFileName;
     private static FiniteAutomataTree dfa;
     private static FiniteAutomataTree nfa;
     private static Parser inputParse;
@@ -40,13 +40,13 @@ public class Grep
                 printDFA = true;
                 dfaOutput = args[1].substring(2);
                 regexAsString = args[2];
-                inputFileAsString = args[3];
+                inputFileName = args[3];
             }
             else {
                 printDFA = false;
                 dfaOutput = "";
                 regexAsString = args[1];
-                inputFileAsString = args[2];
+                inputFileName = args[2];
             }
         }
         else if(option1.equals("-d"))
@@ -56,7 +56,7 @@ public class Grep
             nfaOutput = "";
             dfaOutput = args[0].substring(2);
             regexAsString = args[1];
-            inputFileAsString = args[2];
+            inputFileName = args[2];
         }
         else{
             printDFA = false;
@@ -64,13 +64,15 @@ public class Grep
             nfaOutput = "";
             dfaOutput = "";
             regexAsString = args[0];
-            inputFileAsString = args[1];
+            inputFileName = args[1];
         }
         setLanguage();
         inputParse = new Parser(regexAsString);
         nfa = inputParse.getNfaTree();
         dfa = inputParse.getDfaTree();
-
+        //testAllPrinter();
+        //inputParse.printTester();
+        run();
 
 
         /*
@@ -80,7 +82,7 @@ public class Grep
         */
 
 
-        inputParse.printTester();
+
 
 
     }
@@ -95,7 +97,7 @@ public class Grep
 
         FileInputStream fileInput = null;
         try {
-            fileInput = new FileInputStream(inputFileAsString);
+            fileInput = new FileInputStream(inputFileName);
             int r;
             while ((r = fileInput.read()) != -1)
             {
@@ -104,33 +106,35 @@ public class Grep
                     char c = (char) r;
                     language.add(c);
                 }
-                else
+                else if((r == 40 || r == 41 || r == 42 || r == 124))
                     throw new Error("FATAL ERROR, OPERATION ABORTED: The input file cannot contain the characters '(, ')' , '*' , or '|'.");
 
 
 
             }
             fileInput.close();
+
         }
         catch (java.io.IOException e) {
             e.printStackTrace();
-            System.out.println("There was an arror trying to read the file input file");
+            System.out.println("There was an error trying to read the file input file");
         }
+
     }
 
     private static void run()
     {
 
-        FileInputStream fileInput = null;
+        FileInputStream fileInput2 = null;
         BufferedReader buff = null;
         InputStreamReader sr = null;
         try {
-
-            fileInput = new FileInputStream(inputFileAsString);
-            sr = new InputStreamReader(fileInput);
+            int x =1;
+            fileInput2 = new FileInputStream(inputFileName);
+            sr = new InputStreamReader(fileInput2);
             buff =  new BufferedReader(sr);
             String line =  null;
-            System.out.println("The following fines from the input file match the regex: ");
+            System.out.println("The following lines from the input file match the regex: ");
             while ((line = buff.readLine()) != null)
             {
                 if(match(line))
@@ -140,11 +144,11 @@ public class Grep
 
 
             }
-            fileInput.close();
+            fileInput2.close();
         }
         catch (java.io.IOException e) {
             e.printStackTrace();
-            System.out.println("There was an arror trying to read the file input file");
+            System.out.println("There was an error trying to read the file input file");
         }
     }
 
@@ -152,21 +156,38 @@ public class Grep
     {
         FiniteAutomataNode current;
         current = dfa.getStartNode();
-        boolean dead = false;
 
         for(Character c: line.toCharArray())
         {
-            if(! dead)
-            {
+
+
                 current = current.getMappedValue(c);
-                if (current.equals(dfa.getNullState()))
-                    dead = true;
-            }
+
+
 
         }
-        return current.getAccept();
+
+            return current.getAccept();
 
     }
+
+    private static void testAllPrinter()
+    {
+        for(FiniteAutomataNode fan : dfa.getAllNodes())
+        {
+            System.out.println("Node : " + fan.getName() + ":");
+            System.out.println("The characters that transition out of this node are as follows: ");
+            for (Character c: fan.getKeys())
+            {
+                System.out.print(c + ", ");
+            }
+
+            System.out.print("\n Start State: " + (fan.getName().equals(dfa.getStartNode().getName())) + "\n");
+
+
+        }
+    }
+
 
 
 
