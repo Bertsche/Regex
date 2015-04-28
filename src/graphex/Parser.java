@@ -45,6 +45,17 @@ public class Parser
 
     }
 
+    public FiniteAutomataTree getDfaTree()
+    {
+        return dfaTree;
+    }
+
+
+    public FiniteAutomataTree getNfaTree()
+    {
+        return nfaTree;
+    }
+
 
     public void parseStarter() throws Exception {
 
