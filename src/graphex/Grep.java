@@ -73,9 +73,18 @@ public class Grep
         //testAllPrinter();
         //inputParse.printTester();
         run();
+        if(printDFA)
+            writeToFile(dfaOutput, toDot(dfa));
+        if(printNFA)
+            writeToFile(nfaOutput, toDot(nfa));
+/*
+        System.out.println("NFA DOT FILE:");
+        System.out.println(toDot(nfa));
+        System.out.println("DFA DOT FILE:");
+        System.out.println(toDot(dfa));
 
 
-        /*
+
         File searchable = new File(args[])
         language.addAll(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g'));
         Parser ps = new Parser("(a|b)");
@@ -187,6 +196,63 @@ public class Grep
 
         }
     }
+
+    private static String toDot(FiniteAutomataTree tree)
+    {
+
+        String fullString = "digraph finite_automata{\nrankdir=LR;\nvirtualStart [style = invisible ];\n";
+        String subAccept = "";
+        String subNotAccept = "";
+        String subTransitions = "";
+        subAccept += "node [shape = doublecircle]; ";
+        subNotAccept += "node [shape = circle]; ";
+        for(FiniteAutomataNode fan : tree.getAllNodes())
+        {
+            String name = fan.getName();
+            if (fan.getAccept())
+                subAccept += "\"" + name + "\" ";
+            else
+                subNotAccept += "\"" + name + "\" ";
+
+            for(FiniteAutomataNode destinationNode: new HashSet<>(fan.getValues()))
+            {
+                String transChars = "";
+                for(Character c: fan.getKeys())
+                {
+                    if(fan.getMappedValue(c).equals(destinationNode))
+                        transChars += "'" + c + "', ";
+                }
+                subTransitions += "\"" + name + "\" -> \""  + destinationNode.getName() + "\" [ label = \"" + transChars + "\" ];\n";
+            }
+
+            for(FiniteAutomataNode epsilons : fan.getEpsilonTransitions())
+            {
+                subTransitions += "\"" + name + "\" -> \""  + epsilons.getName() + "\" [ label = \"ε\" ];\n";
+            }
+
+
+        }
+        subAccept += ";\n";
+        subNotAccept += ";\n";
+
+        fullString += subAccept + subNotAccept + subTransitions + "virtualStart -> \"" + tree.getStartNode().getName() + "\"\n}";
+        return fullString;
+
+    }
+
+    private static void writeToFile(String destination, String toBeWritten)
+    {
+        System.out.println("writing to destination: " + destination);
+        try {
+            FileWriter writer = new FileWriter(destination);
+            writer.write(toBeWritten);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 

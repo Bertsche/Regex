@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fef42c3-6196-4a82-950d-178035b26c8a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Regex Project/graphex/FiniteAutomataTree.class" afterPath="$PROJECT_DIR$/out/production/Regex Project/graphex/FiniteAutomataTree.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Regex Project/graphex/Grep.class" afterPath="$PROJECT_DIR$/out/production/Regex Project/graphex/Grep.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Regex Project/graphex/Parser.class" afterPath="$PROJECT_DIR$/out/production/Regex Project/graphex/Parser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/graphex/Grep.java" afterPath="$PROJECT_DIR$/src/graphex/Grep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/graphex/Parser.java" afterPath="$PROJECT_DIR$/src/graphex/Parser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Regex Project.iws" />
@@ -31,15 +26,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Grep.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Grep.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/graphex/Grep.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.1890756">
+              <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2320#2321#0" expanded="true" />
-                <element signature="e#2351#2352#0" expanded="true" />
+                <element signature="e#2621#2622#0" expanded="true" />
+                <element signature="e#2652#2653#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphex/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57471263">
+            <state vertical-scroll-proportion="0.0">
               <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding>
                 <element signature="e#1166#1167#0" expanded="true" />
@@ -85,8 +80,8 @@
       <file leaf-file-name="FiniteAutomataNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphex/FiniteAutomataNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.677419">
-              <caret line="171" column="39" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
               <folding>
                 <element signature="e#4603#4604#0" expanded="true" />
                 <element signature="e#4653#4654#0" expanded="true" />
@@ -121,8 +116,9 @@
         <option value="$PROJECT_DIR$/src/graphex/Matcher.java" />
         <option value="$PROJECT_DIR$/src/graphex/test.txt" />
         <option value="$PROJECT_DIR$/test.txt" />
-        <option value="$PROJECT_DIR$/src/graphex/Grep.java" />
         <option value="$PROJECT_DIR$/src/graphex/Parser.java" />
+        <option value="$PROJECT_DIR$/src/graphex/Grep.java" />
+        <option value="$PROJECT_DIR$/ nfa.dot" />
       </list>
     </option>
   </component>
@@ -253,7 +249,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="graphex.Grep" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;(a|ba)*c*b&quot; &quot;test.txt&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;-d dfa2.dot&quot; &quot;(a|ba)*c*b&quot; &quot;test.txt&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -568,7 +564,7 @@
       <workItem from="1429739907720" duration="9189000" />
       <workItem from="1429900223334" duration="17851000" />
       <workItem from="1429994981984" duration="2985000" />
-      <workItem from="1430237448651" duration="17733000" />
+      <workItem from="1430237448651" duration="25362000" />
     </task>
     <task id="LOCAL-00001" summary="Just a push from intellij because it says  theres update files">
       <created>1429918630322</created>
@@ -582,11 +578,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430245830190</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="The regex matching has now been more thoroughly tested and seems to work for all valid regex, as well as checking the validity of regex and throwing error if it is invalid.  Still need to make a toDot file method to convert nfa and dfa to dot file and output them to specified file if the option is selected.  Also removed some of the system outputs that were used for testing various portions of the project">
+      <created>1430256261015</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1430256261015</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71301000" />
+    <option name="totallyTimeSpent" value="78930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="876" extended-state="6" />
@@ -609,7 +611,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.159375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4009662" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3888889" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32971016" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -632,7 +634,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Just a push from intellij because it says  theres update files" />
     <MESSAGE value="Redid main method to support command line arguments. Testing needs to be done, and after that the dot files for nfa and dfa need to be generated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Redid main method to support command line arguments. Testing needs to be done, and after that the dot files for nfa and dfa need to be generated." />
+    <MESSAGE value="The regex matching has now been more thoroughly tested and seems to work for all valid regex, as well as checking the validity of regex and throwing error if it is invalid.  Still need to make a toDot file method to convert nfa and dfa to dot file and output them to specified file if the option is selected.  Also removed some of the system outputs that were used for testing various portions of the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="The regex matching has now been more thoroughly tested and seems to work for all valid regex, as well as checking the validity of regex and throwing error if it is invalid.  Still need to make a toDot file method to convert nfa and dfa to dot file and output them to specified file if the option is selected.  Also removed some of the system outputs that were used for testing various portions of the project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -649,8 +652,8 @@
           <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2621#2622#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,8 +698,8 @@
           <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2621#2622#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -741,8 +744,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
+            <element signature="e#2621#2622#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -837,14 +840,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphex/FiniteAutomataNode.java">
+    <entry file="file://$PROJECT_DIR$/src/graphex/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.677419">
-          <caret line="171" column="39" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
           <folding>
-            <element signature="e#4603#4604#0" expanded="true" />
-            <element signature="e#4653#4654#0" expanded="true" />
+            <element signature="e#1166#1167#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -858,35 +871,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
+    <entry file="file://$PROJECT_DIR$/src/graphex/FiniteAutomataNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
+          <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
+          <folding>
+            <element signature="e#4603#4604#0" expanded="true" />
+            <element signature="e#4653#4654#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/graphex/Grep.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.1890756">
+          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphex/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57471263">
-          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding>
-            <element signature="e#1166#1167#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#2621#2622#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
           </folding>
         </state>
       </provider>
